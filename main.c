@@ -17,46 +17,52 @@ void display()
     glPushMatrix();
     glRotatef((GLfloat)rot, 0.0, 1.0, 0.0);
 
-    float x;
+    float x, y, z;
     for (int i = 0; i < 5; i++)
     {
-        glPushMatrix();
         x = i * 5.5;
+        for (int j = 0; j < 3; j++)
+        {
+            y = j * 3;
 
-        /* Almofada */
-        glColor3f(1.0, 0.0, 0.0);
-        glTranslatef(0.0 + x, 2.0, 0.0);
-        glPushMatrix();
-        glScalef(5.0, 1.0, 5.0);
-        glutSolidCube(1.0);
-        glPopMatrix();
+            z = j * 10;
+            glPushMatrix();
 
-        /* Braço esquerdo*/
-        glColor3f(0.0, 1.0, 0.0);
-        glPushMatrix();
-        glTranslatef(-2.75, 0.0, 0.0);
-        glScalef(0.5, 4.0, 5.0);
-        glutSolidCube(1.0);
-        glPopMatrix();
+            /* Almofada */
+            glColor3f(1.0, 0.0, 0.0);
+            glTranslatef(-11.0 + x, 2.0 + y, 0.0 - z);
+            glPushMatrix();
+            glScalef(5.0, 1.0, 5.0);
+            glutSolidCube(1.0);
+            glPopMatrix();
 
-        /* Braço direito*/
-        glColor3f(0.0, 1.0, 0.0);
-        glPushMatrix();
-        glTranslatef(2.75, 0.0, 0.0);
-        glScalef(0.5, 4.0, 5.0);
-        glutSolidCube(1.0);
-        glPopMatrix();
+            /* Braço esquerdo*/
+            glColor3f(0.0, 1.0, 0.0);
+            glPushMatrix();
+            glTranslatef(-2.75, 0.0, 0.0);
+            glScalef(0.5, 4.0, 5.0);
+            glutSolidCube(1.0);
+            glPopMatrix();
 
-        /* Encosto*/
-        glColor3f(0.0, 0.0, 1.0);
-        glPushMatrix();
-        glRotatef(-5.0, 1.0, 0.0, 0.0);
-        glTranslatef(0.0, 2.0, -3.0);
-        glScalef(5.0, 5.0, 1.0);
-        glutSolidCube(1.0);
-        glPopMatrix();
+            /* Braço direito*/
+            glColor3f(0.0, 1.0, 0.0);
+            glPushMatrix();
+            glTranslatef(2.75, 0.0, 0.0);
+            glScalef(0.5, 4.0, 5.0);
+            glutSolidCube(1.0);
+            glPopMatrix();
 
-        glPopMatrix();
+            /* Encosto*/
+            glColor3f(0.0, 0.0, 1.0);
+            glPushMatrix();
+            glRotatef(-5.0, 1.0, 0.0, 0.0);
+            glTranslatef(0.0, 2.0, -3.0);
+            glScalef(5.0, 5.0, 1.0);
+            glutSolidCube(1.0);
+            glPopMatrix();
+
+            glPopMatrix();
+        }
     }
     glPopMatrix(); // da rotacao da cena
 
