@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 static int rot = 0;
-static float camY = -3.0;
-static float camZ = -25.0;
+static float camY = -10.0;
+static float camZ = 0.0;
 
 void init(void)
 {
@@ -161,12 +161,12 @@ void keyboard(unsigned char key, int x, int y)
             break;
             case 'q':
             camZ += 1.0;
-            if (camZ > -5.0) camZ = -5.0;
+            if (camZ > 10.0) camZ = 10.0;
             break;
 
         case 'e':
             camZ -= 1.0;
-            if (camZ < -50.0) camZ = -50.0;
+            if (camZ < -20.0) camZ = -20.0;
             break;
         case 27:
             exit(0);
