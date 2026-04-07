@@ -81,6 +81,14 @@ void display()
     glutSolidCube(1.0);
     glPopMatrix();
 
+    /*porta*/
+    glColor3f(0.3, 0.2, 0.1);
+    glPushMatrix();
+    glTranslatef(-20.0, 2.0, -39.9);
+    glScalef(-10.0, 15.0, 0.2);
+    glutSolidCube(2);
+    glPopMatrix();
+
     /* Tela */
     glColor3f(1.0, 1.0, 1.0);
     glPushMatrix();
