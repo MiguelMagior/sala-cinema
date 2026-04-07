@@ -25,7 +25,7 @@ void display()
     glColor3f(0.1, 0.1, 0.1);
     glPushMatrix();
     glTranslatef(0.0, 0.0, -15.0);
-    glScalef(50.0, 0.1, 50.0);
+    glScalef(50.0, 0.1, 75.0);
     glutSolidCube(1.0);
     glPopMatrix();
 
@@ -43,11 +43,11 @@ void display()
     glutSolidCube(1.0);
     glPopMatrix();
 
-    /* Telhado */
-    glColor3f(0.8, 0.8, 0.8); // Cinza claro
+    /* Teto */
+    glColor3f(0.8, 0.8, 0.8); 
     glPushMatrix();
-    glTranslatef(0.0, 15.0, -15.0);
-    glScalef(50.0, 0.1, 50.0);
+    glTranslatef(0.0, 25.0, -15.0);
+    glScalef(50.0, 0.1, 75.0);
     glutSolidCube(1.0);
     glPopMatrix();
 
@@ -55,28 +55,37 @@ void display()
     glColor3f(0.6, 0.6, 0.6);
     glPushMatrix();
     glTranslatef(-25.0, 7.5, -15.0);
-    glScalef(0.1, 15.0, 50.0);
+    glScalef(0.1, 35.0, 75.0);
     glutSolidCube(1.0);
     glPopMatrix();
 
     /* Parede direita */
     glPushMatrix();
     glTranslatef(25.0, 7.5, -15.0);
-    glScalef(0.1, 15.0, 50.0);
+    glScalef(0.1, 35.0, 75.0);
     glutSolidCube(1.0);
     glPopMatrix();
 
     /* Parede fundo */
     glPushMatrix();
     glTranslatef(0.0, 7.5, -40.0);
-    glScalef(50.0, 15.0, 0.1);
+    glScalef(50.0, 35.0, 0.1);
     glutSolidCube(1.0);
     glPopMatrix();
+
     /* Parede Tela */
     glColor3f(0.5, 0.5, 0.5);
     glPushMatrix();
-    glTranslatef(0.0, 7.5, 10.0);
-    glScalef(50.0, 15.0, 0.1);
+    glTranslatef(0.0, 7.5, 20.0);
+    glScalef(50.0, 35.0, 0.1);
+    glutSolidCube(1.0);
+    glPopMatrix();
+
+    /* Tela */
+    glColor3f(1.0, 1.0, 1.0);
+    glPushMatrix();
+    glTranslatef(0.0, 12.5, 19.9);
+    glScalef(35.0, 20.0, 0.1);
     glutSolidCube(1.0);
     glPopMatrix();
 
@@ -135,21 +144,21 @@ void display()
             glPopMatrix();
         }
     }
-
-    for (int i = 0; i < 4; i++)
+    // Luzes
+    for (int i = 0; i < 5; i++)
     {
-        float y = (i == 3) ? 12.0 : 10.0 + (float)i;
-        float z =  -10 * (float)i;
+        float y = (i > 2) ? 16.0 : 10.0 + (float)i * 2;
+        float z =  -9 * (float)i;
         glColor3f(1.0, 1.0, 0.0);
         glPushMatrix();
         glTranslatef(-25.0, y, z);
-        glutSolidSphere(1.0, 8, 8);
+        glutSolidSphere(0.75, 8, 8);
         glPopMatrix();
 
         glColor3f(1.0, 1.0, 0.0);
         glPushMatrix();
         glTranslatef(25.0, y, z);
-        glutSolidSphere(1.0, 8, 8);
+        glutSolidSphere(0.75, 8, 8);
         glPopMatrix();
     }
 
