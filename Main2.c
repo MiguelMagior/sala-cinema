@@ -16,60 +16,73 @@ void display()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
-
     glTranslatef(0.0, camY, camZ);
     /* rotacao da cena*/
     glPushMatrix();
     glRotatef((GLfloat)rot, 0.0, 1.0, 0.0);
 
-    float x, y, z;
     /* Chao */
-        glColor3f(0.7, 0.7, 0.7); // Cinza médio
-        glPushMatrix();
-        glTranslatef(0.0, 0.0, -15.0);
-        glScalef(50.0, 0.1, 50.0);
-        glutSolidCube(1.0);
-        glPopMatrix();
+    glColor3f(0.1, 0.1, 0.1);
+    glPushMatrix();
+    glTranslatef(0.0, 0.0, -15.0);
+    glScalef(50.0, 0.1, 50.0);
+    glutSolidCube(1.0);
+    glPopMatrix();
 
-        /* Telhado */
-        glColor3f(0.8, 0.8, 0.8); // Cinza claro
-        glPushMatrix();
-        glTranslatef(0.0, 15.0, -15.0);
-        glScalef(50.0, 0.1, 50.0);
-        glutSolidCube(1.0);
-        glPopMatrix();
+    glColor3f(0.2, 0.2, 0.2);
+    glPushMatrix();
+    glTranslatef(0.0, 1.5, -10.0);
+    glScalef(50.0, 3.0, 10.0);
+    glutSolidCube(1.0);
+    glPopMatrix();
+
+    glColor3f(0.3, 0.3, 0.3);
+    glPushMatrix();
+    glTranslatef(0.0, 3.0, -25.0);
+    glScalef(50.0, 6.0, 20.0);
+    glutSolidCube(1.0);
+    glPopMatrix();
+
+    /* Telhado */
+    glColor3f(0.8, 0.8, 0.8); // Cinza claro
+    glPushMatrix();
+    glTranslatef(0.0, 15.0, -15.0);
+    glScalef(50.0, 0.1, 50.0);
+    glutSolidCube(1.0);
+    glPopMatrix();
 
     /* Parede esquerda */
-        glColor3f(0.6, 0.6, 0.6);
-        glPushMatrix();
-        glTranslatef(-25.0, 7.5, -15.0);
-        glScalef(0.1, 15.0, 50.0);
-        glutSolidCube(1.0);
-        glPopMatrix();
+    glColor3f(0.6, 0.6, 0.6);
+    glPushMatrix();
+    glTranslatef(-25.0, 7.5, -15.0);
+    glScalef(0.1, 15.0, 50.0);
+    glutSolidCube(1.0);
+    glPopMatrix();
 
-        /* Parede direita */
-        glPushMatrix();
-        glTranslatef(25.0, 7.5, -15.0);
-        glScalef(0.1, 15.0, 50.0);
-        glutSolidCube(1.0);
-        glPopMatrix();
+    /* Parede direita */
+    glPushMatrix();
+    glTranslatef(25.0, 7.5, -15.0);
+    glScalef(0.1, 15.0, 50.0);
+    glutSolidCube(1.0);
+    glPopMatrix();
 
-        /* Parede fundo */
-        glPushMatrix();
-        glTranslatef(0.0, 7.5, -40.0);
-        glScalef(50.0, 15.0, 0.1);
-        glutSolidCube(1.0);
-        glPopMatrix();
-        /* Parede Tela */
-        glColor3f(0.5, 0.5, 0.5);
-        glPushMatrix();
-        glTranslatef(0.0, 7.5, 10.0);
-        glScalef(50.0, 15.0, 0.1);
-        glutSolidCube(1.0);
-        glPopMatrix();
+    /* Parede fundo */
+    glPushMatrix();
+    glTranslatef(0.0, 7.5, -40.0);
+    glScalef(50.0, 15.0, 0.1);
+    glutSolidCube(1.0);
+    glPopMatrix();
+    /* Parede Tela */
+    glColor3f(0.5, 0.5, 0.5);
+    glPushMatrix();
+    glTranslatef(0.0, 7.5, 10.0);
+    glScalef(50.0, 15.0, 0.1);
+    glutSolidCube(1.0);
+    glPopMatrix();
 
     for (int i = 0; i < 5; i++)
     {
+        float x, y, z;
         x = i * 5.5;
         for (int j = 0; j < 3; j++)
         {
@@ -111,17 +124,35 @@ void display()
             glutSolidCube(1.0);
             glPopMatrix();
 
-            /*Escada*/
+            /*Escada
             glColor3f(0.8, 0.8, 0.8);
             glPushMatrix();
             glTranslatef(-14.0, 1.0 + (j * 3), -(j * 10.0) - 5.0);
             glScalef(3.0, 0.5, 10.0);
             glutSolidCube(1.0);
             glPopMatrix();
-
+            */
             glPopMatrix();
         }
     }
+
+    for (int i = 0; i < 4; i++)
+    {
+        float y = (i == 3) ? 12.0 : 10.0 + (float)i;
+        float z =  -10 * (float)i;
+        glColor3f(1.0, 1.0, 0.0);
+        glPushMatrix();
+        glTranslatef(-25.0, y, z);
+        glutSolidSphere(1.0, 8, 8);
+        glPopMatrix();
+
+        glColor3f(1.0, 1.0, 0.0);
+        glPushMatrix();
+        glTranslatef(25.0, y, z);
+        glutSolidSphere(1.0, 8, 8);
+        glPopMatrix();
+    }
+
     glPopMatrix(); // da rotacao da cena
 
     glutSwapBuffers();
@@ -132,7 +163,7 @@ void reshape(int w, int h)
     glViewport(0, 0, (GLsizei)w, (GLsizei)h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(65.0, (GLfloat)w / (GLfloat)h, 1.0, 40.0);
+    gluPerspective(65.0, (GLfloat)w / (GLfloat)h, 1.0, 75.0);
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -140,37 +171,41 @@ void keyboard(unsigned char key, int x, int y)
 {
     switch (key)
     {
-        case 'd':
-            rot = (rot + 5) % 360;
-            break;
-        case 'a':
-            rot = (rot - 5) % 360;
-            break;
-        case 'w':
-            camY -= 0.2;
-            if (camY < -15.0) {
-                camY = -15.0;
-            }
-            break;
+    case 'd':
+        rot = (rot + 5) % 360;
+        break;
+    case 'a':
+        rot = (rot - 5) % 360;
+        break;
+    case 'w':
+        camY -= 0.2;
+        if (camY < -15.0)
+        {
+            camY = -15.0;
+        }
+        break;
 
-        case 's':
-            camY += 0.2;
-            if (camY > 5.0) {
-                camY = 5.0;
-            }
-            break;
-            case 'q':
-            camZ += 1.0;
-            if (camZ > 10.0) camZ = 10.0;
-            break;
+    case 's':
+        camY += 0.2;
+        if (camY > 5.0)
+        {
+            camY = 5.0;
+        }
+        break;
+    case 'q':
+        camZ += 1.0;
+        if (camZ > 10.0)
+            camZ = 10.0;
+        break;
 
-        case 'e':
-            camZ -= 1.0;
-            if (camZ < -20.0) camZ = -20.0;
-            break;
-        case 27:
-            exit(0);
-            break;
+    case 'e':
+        camZ -= 1.0;
+        if (camZ < -20.0)
+            camZ = -20.0;
+        break;
+    case 27:
+        exit(0);
+        break;
     }
     glutPostRedisplay();
 }
