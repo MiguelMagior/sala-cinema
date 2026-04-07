@@ -86,7 +86,7 @@ void display()
     glPushMatrix();
     glTranslatef(-20.0, 2.0, -39.9);
     glScalef(-10.0, 15.0, 0.2);
-    glutSolidCube(2);
+    glutSolidCube(2.0);
     glPopMatrix();
 
     /* Tela */
