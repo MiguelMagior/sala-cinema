@@ -160,6 +160,21 @@ void display()
         glTranslatef(25.0, y, z);
         glutSolidSphere(0.75, 8, 8);
         glPopMatrix();
+        //cones som
+        glColor3f(0.0, 0.0, 0.0);
+        glPushMatrix();
+        glTranslatef(24.5, y - 2.0, z);
+        glRotatef(0.0, 0.0, 1.0, 0.0);
+        glutSolidCone(0.75, 1.5, 16, 16);
+        glPopMatrix();
+
+        glColor3f(0.0, 0.0, 0.0);
+        glPushMatrix();
+        glTranslatef(-24.5, y - 2.0, z);
+        glRotatef(0.0, 0.0, 1.0, 0.0);
+        glutSolidCone(0.75, 1.5, 16, 16);
+        glPopMatrix();
+        
     }
 
     glPopMatrix(); // da rotacao da cena
