@@ -22,7 +22,7 @@ void display()
     glRotatef((GLfloat)rot, 0.0, 1.0, 0.0);
 
     /* Chao */
-    glColor3f(0.1, 0.1, 0.1);
+    glColor3f(0.3, 0.3, 0.3);
     glPushMatrix();
     glTranslatef(0.0, 0.0, -15.0);
     glScalef(50.0, 0.1, 75.0);
@@ -44,7 +44,7 @@ void display()
     glPopMatrix();
 
     /* Teto */
-    glColor3f(0.8, 0.8, 0.8); 
+    glColor3f(0.1, 0.1, 0.1); 
     glPushMatrix();
     glTranslatef(0.0, 25.0, -15.0);
     glScalef(50.0, 0.1, 75.0);
@@ -52,7 +52,7 @@ void display()
     glPopMatrix();
 
     /* Parede esquerda */
-    glColor3f(0.6, 0.6, 0.6);
+    glColor3f(1.0, 0.2, 0.2);
     glPushMatrix();
     glTranslatef(-25.0, 7.5, -15.0);
     glScalef(0.1, 35.0, 75.0);
@@ -74,7 +74,7 @@ void display()
     glPopMatrix();
 
     /* Parede Tela */
-    glColor3f(0.5, 0.5, 0.5);
+    glColor3f(0.1, 0.1, 0.1); 
     glPushMatrix();
     glTranslatef(0.0, 7.5, 20.0);
     glScalef(50.0, 35.0, 0.1);
@@ -109,7 +109,7 @@ void display()
             glPushMatrix();
 
             /* Almofada */
-            glColor3f(1.0, 0.0, 0.0);
+            glColor3f(0.1, 0.1, 0.1);
             glTranslatef(-11.0 + x, 2.0 + y, 0.0 - z);
             glPushMatrix();
             glScalef(5.0, 1.0, 5.0);
@@ -117,7 +117,7 @@ void display()
             glPopMatrix();
 
             /* Braço esquerdo*/
-            glColor3f(0.0, 1.0, 0.0);
+            glColor3f(0.5, 0.5, 0.5);
             glPushMatrix();
             glTranslatef(-2.75, 0.0, 0.0);
             glScalef(0.5, 4.0, 5.0);
@@ -125,7 +125,7 @@ void display()
             glPopMatrix();
 
             /* Braço direito*/
-            glColor3f(0.0, 1.0, 0.0);
+            glColor3f(0.5, 0.5, 0.5);
             glPushMatrix();
             glTranslatef(2.75, 0.0, 0.0);
             glScalef(0.5, 4.0, 5.0);
@@ -133,7 +133,7 @@ void display()
             glPopMatrix();
 
             /* Encosto*/
-            glColor3f(0.0, 0.0, 1.0);
+            glColor3f(0.1, 0.1, 0.1);
             glPushMatrix();
             glRotatef(-5.0, 1.0, 0.0, 0.0);
             glTranslatef(0.0, 2.0, -3.0);
@@ -141,47 +141,42 @@ void display()
             glutSolidCube(1.0);
             glPopMatrix();
 
-            /*Escada
-            glColor3f(0.8, 0.8, 0.8);
-            glPushMatrix();
-            glTranslatef(-14.0, 1.0 + (j * 3), -(j * 10.0) - 5.0);
-            glScalef(3.0, 0.5, 10.0);
-            glutSolidCube(1.0);
-            glPopMatrix();
-            */
             glPopMatrix();
         }
     }
     // Luzes
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 4; i++)
     {
-        float y = (i > 2) ? 16.0 : 10.0 + (float)i * 2;
+        float y = (i > 2) ? 19.0 : 15.0 + (float)i * 2;
         float z =  -9 * (float)i;
         glColor3f(1.0, 1.0, 0.0);
         glPushMatrix();
         glTranslatef(-25.0, y, z);
+        glScalef(1.0, 3.0, 1.0);
         glutSolidSphere(0.75, 8, 8);
         glPopMatrix();
 
         glColor3f(1.0, 1.0, 0.0);
         glPushMatrix();
         glTranslatef(25.0, y, z);
+        glScalef(1.0, 3.0, 1.0);
         glutSolidSphere(0.75, 8, 8);
         glPopMatrix();
         
         //cones som
-        glColor3f(0.0, 0.0, 0.0);
+        glColor3f(0.2, 0.2, 0.2);
         glPushMatrix();
-        glTranslatef(24.5, y - 2.0, z);
-        glRotatef(0.0, 0.0, 1.0, 0.0);
-        glutSolidCone(0.75, 1.5, 16, 16);
+        glTranslatef(25.0, y - 2.0, z + 5);
+        glRotatef(30, 0.0, 0.0, 1.0);
+        glScalef(1.0, 3.0, 2.0);
+        glutSolidCube(1.0);
         glPopMatrix();
 
-        glColor3f(0.0, 0.0, 0.0);
         glPushMatrix();
-        glTranslatef(-24.5, y - 2.0, z);
-        glRotatef(0.0, 0.0, 1.0, 0.0);
-        glutSolidCone(0.75, 1.5, 16, 16);
+        glTranslatef(-25.0, y - 2.0, z + 5);
+        glRotatef(-30, 0.0, 0.0, 1.0);
+        glScalef(1.0, 3.0, 2.0);
+        glutSolidCube(1.0);
         glPopMatrix();
         
     }
