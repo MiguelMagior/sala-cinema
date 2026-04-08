@@ -81,7 +81,7 @@ void display()
     glutSolidCube(1.0);
     glPopMatrix();
 
-    /*porta*/
+    /* Porta */
     glColor3f(0.3, 0.2, 0.1);
     glPushMatrix();
     glTranslatef(-20.0, 2.0, -39.9);
@@ -116,7 +116,7 @@ void display()
             glutSolidCube(1.0);
             glPopMatrix();
 
-            /* Braço esquerdo*/
+            /* Braço esquerdo */
             glColor3f(0.5, 0.5, 0.5);
             glPushMatrix();
             glTranslatef(-2.75, 0.0, 0.0);
@@ -124,7 +124,7 @@ void display()
             glutSolidCube(1.0);
             glPopMatrix();
 
-            /* Braço direito*/
+            /* Braço direito */
             glColor3f(0.5, 0.5, 0.5);
             glPushMatrix();
             glTranslatef(2.75, 0.0, 0.0);
@@ -132,7 +132,7 @@ void display()
             glutSolidCube(1.0);
             glPopMatrix();
 
-            /* Encosto*/
+            /* Encosto */
             glColor3f(0.1, 0.1, 0.1);
             glPushMatrix();
             glRotatef(-5.0, 1.0, 0.0, 0.0);
@@ -144,56 +144,73 @@ void display()
             glPopMatrix();
         }
     }
-    // Luzes
+    /* Elementos Parede*/ 
     for (int i = 0; i < 4; i++)
     {
         float y = (i > 2) ? 19.0 : 15.0 + (float)i * 2;
-        float z = -9 * (float)i;
+        float z = -11 * (float)i;
+
+        /* Pilares */
+        glColor3f(0.5, 0.5, 0.5);
+        glPushMatrix();
+        glTranslatef(-25.0, 12.5, z);
+        glScalef(1.0, 25.0, 3.0);
+        glutSolidCube(1.0);
+        glPopMatrix();
+
+        glPushMatrix();
+        glTranslatef(25.0, 12.5, z);
+        glScalef(1.0, 25.0, 3.0);
+        glutSolidCube(1.0);
+        glPopMatrix();
+
+        /* Luzes */ 
         glColor3f(1.0, 1.0, 0.0);
         glPushMatrix();
-        glTranslatef(-25.0, y, z);
+        glTranslatef(-24.0, y, z);
         glScalef(1, 3.0, 1.0);
         glutSolidSphere(1, 8, 8);
         glPopMatrix();
 
         glColor3f(0.2, 0.2, 0.2);
         glPushMatrix();
-        glTranslatef(-25.0, y-1.75, z);
+        glTranslatef(-24.0, y-1.75, z);
         glRotatef(90, 1.0, 0.0, 0.0);
         glutSolidCone(1.0, 2, 8, 8);
         glPopMatrix();
 
         glColor3f(1.0, 1.0, 0.0);
         glPushMatrix();
-        glTranslatef(25.0, y, z);
+        glTranslatef(24.0, y, z);
         glScalef(1.0, 3.0, 1.0);
         glutSolidSphere(1, 8, 8);
         glPopMatrix();
 
         glColor3f(0.2, 0.2, 0.2);
         glPushMatrix();
-        glTranslatef(25.0, y-1.75, z);
+        glTranslatef(24.0, y-1.75, z);
         glRotatef(90, 1.0, 0.0, 0.0);
         glutSolidCone(1.0, 2, 8, 8);
         glPopMatrix();
-        
-        // caixas som
+
+        /* Caixas de Som*/ 
         glColor3f(0.2, 0.2, 0.2);
         glPushMatrix();
-        glTranslatef(25.0, y - 2.0, z + 5);
+        glTranslatef(25.0, y - 2.0, z + 5.5);
         glRotatef(30, 0.0, 0.0, 1.0);
         glScalef(1.0, 3.0, 2.0);
         glutSolidCube(1.0);
         glPopMatrix();
 
         glPushMatrix();
-        glTranslatef(-25.0, y - 2.0, z + 5);
+        glTranslatef(-25.0, y - 2.0, z + 5.5);
         glRotatef(-30, 0.0, 0.0, 1.0);
         glScalef(1.0, 3.0, 2.0);
         glutSolidCube(1.0);
         glPopMatrix();
     }
-    // projetor
+
+    /* Projetor */
     glColor3f(0.5, 0.5, 0.5);
     glPushMatrix();
     glTranslatef(0.0, 22.5, -35);
