@@ -58,27 +58,30 @@ void display()
     glutSolidCube(1.0);
     glPopMatrix();
 
-    /* Parede esquerda */
+    /* Parede esquerda
     glColor3f(1.0, 0.2, 0.2);
     glPushMatrix();
     glTranslatef(-25.0, 7.5, -15.0);
     glScalef(0.1, 35.0, 75.0);
     glutSolidCube(1.0);
     glPopMatrix();
+*/
 
-    /* Parede direita */
+    /* Parede direita
     glPushMatrix();
     glTranslatef(25.0, 7.5, -15.0);
     glScalef(0.1, 35.0, 75.0);
     glutSolidCube(1.0);
     glPopMatrix();
+*/
 
-    /* Parede fundo */
+    /* Parede fundo
     glPushMatrix();
     glTranslatef(0.0, 7.5, -40.0);
     glScalef(50.0, 35.0, 0.1);
     glutSolidCube(1.0);
     glPopMatrix();
+*/
 
     /* Parede Tela */
     glColor3f(0.1, 0.1, 0.1);
@@ -88,6 +91,49 @@ void display()
     glutSolidCube(1.0);
     glPopMatrix();
 
+    /* Parede esquerda com textura repetida */
+    glEnable(GL_TEXTURE_2D);
+    glBegin(GL_QUADS);
+    // Coordenadas de textura maiores que 1 fazem a textura repetir
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(-24.95f, -10.0f, -52.5f); // inferior traseiro
+    glTexCoord2f(3.0f, 0.0f);
+    glVertex3f(-24.95f, -10.0f, 22.5f); // inferior frontal (repete 3x horizontal)
+    glTexCoord2f(3.0f, 2.0f);
+    glVertex3f(-24.95f, 25.0f, 22.5f); // superior frontal (repete 2x vertical)
+    glTexCoord2f(0.0f, 2.0f);
+    glVertex3f(-24.95f, 25.0f, -52.5f); // superior traseiro
+    glEnd();
+    glDisable(GL_TEXTURE_2D);
+
+    /* Parede direita com textura repetida */
+    glEnable(GL_TEXTURE_2D);
+    glBegin(GL_QUADS);
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(24.95f, -10.0f, -52.5f);
+    glTexCoord2f(3.0f, 0.0f);
+    glVertex3f(24.95f, -10.0f, 22.5f);
+    glTexCoord2f(3.0f, 2.0f);
+    glVertex3f(24.95f, 25.0f, 22.5f);
+    glTexCoord2f(0.0f, 2.0f);
+    glVertex3f(24.95f, 25.0f, -52.5f);
+    glEnd();
+    glDisable(GL_TEXTURE_2D);
+
+    /* Parede fundo com textura repetida */
+    glEnable(GL_TEXTURE_2D);
+    glBegin(GL_QUADS);
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(-25.0f, -10.0f, -39.95f); // inferior esquerdo
+    glTexCoord2f(3.0f, 0.0f);
+    glVertex3f(25.0f, -10.0f, -39.95f); // inferior direito 
+    glTexCoord2f(3.0f, 2.0f);
+    glVertex3f(25.0f, 25.0f, -39.95f); // superior direito 
+    glTexCoord2f(0.0f, 2.0f);
+    glVertex3f(-25.0f, 25.0f, -39.95f); // superior esquerdo
+    glEnd();
+    glDisable(GL_TEXTURE_2D);
+
     /* Porta */
     glColor3f(0.3, 0.2, 0.1);
     glPushMatrix();
@@ -96,45 +142,28 @@ void display()
     glutSolidCube(2.0);
     glPopMatrix();
 
-    /* Tela 
+    /* Tela*/
     glColor3f(1.0, 1.0, 1.0);
     glPushMatrix();
     glTranslatef(0.0, 12.5, 19.9);
     glScalef(35.0, 20.0, 0.1);
     glutSolidCube(1.0);
     glPopMatrix();
-    */
 
-    /* Tela com Textura */
-glEnable(GL_TEXTURE_2D);
-glBegin(GL_QUADS);
-// The screen is scaled 35.0 (width) x 20.0 (height) x 0.1 (depth)
-// Centered at (0, 12.5, 19.9)
-// So vertices should be at half those dimensions
-glTexCoord2f(0.0f, 0.0f); glVertex3f(-17.5f, 2.5f, 19.9f);   // Bottom-left
-glTexCoord2f(1.0f, 0.0f); glVertex3f(17.5f, 2.5f, 19.9f);    // Bottom-right  
-glTexCoord2f(1.0f, 1.0f); glVertex3f(17.5f, 22.5f, 19.9f);   // Top-right
-glTexCoord2f(0.0f, 1.0f); glVertex3f(-17.5f, 22.5f, 19.9f);  // Top-left
-glEnd();
-glDisable(GL_TEXTURE_2D);
-
+    /* Tela com Textura
     glEnable(GL_TEXTURE_2D);
     glBegin(GL_QUADS);
-    // Front face (facing the camera)
-    // Bottom-left
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(-5.0f, 20.0f, 20.0f);
-    // Bottom-right
-    glTexCoord2f(1.0f, 0.0f);
-    glVertex3f(5.0f, 20.0f, 20.0f);
-    // Top-right
-    glTexCoord2f(1.0f, 1.0f);
-    glVertex3f(5.0f, 25.0f, 20.0f);
-    // Top-left
-    glTexCoord2f(0.0f, 1.0f);
-    glVertex3f(-5.0f, 25.0f, 20.0f);
+    glTexCoord2f(0.0, 0.0);
+    glVertex3f(-17.5, 2.5, 19.9); // Bottom-left
+    glTexCoord2f(1.0, 0.0);
+    glVertex3f(17.5, 2.5, 19.9); // Bottom-right
+    glTexCoord2f(1.0, 1.0);
+    glVertex3f(17.5, 22.5, 19.9); // Top-right
+    glTexCoord2f(0.0, 1.0);
+    glVertex3f(-17.5, 22.5, 19.9); // Top-left
     glEnd();
     glDisable(GL_TEXTURE_2D);
+    */
 
     for (int i = 0; i < 5; i++)
     {
