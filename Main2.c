@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "image.h"
-#define TEXTURA_DO_PLANO "flamengo.rgb"
+#define TEXTURA_DO_PLANO "wood.rgb"
 
 static int rot = 0;
 static float camY = -10.0;
@@ -25,9 +25,7 @@ void display()
     glPushMatrix();
     glRotatef((GLfloat)rot, 0.0, 1.0, 0.0);
 
-    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-    glBindTexture(GL_TEXTURE_2D, textura_plano);
-
+    
     /* Chao */
     glColor3f(0.3, 0.3, 0.3);
     glPushMatrix();
@@ -65,7 +63,7 @@ void display()
     glScalef(0.1, 35.0, 75.0);
     glutSolidCube(1.0);
     glPopMatrix();
-*/
+    */
 
     /* Parede direita
     glPushMatrix();
@@ -73,7 +71,7 @@ void display()
     glScalef(0.1, 35.0, 75.0);
     glutSolidCube(1.0);
     glPopMatrix();
-*/
+*   /
 
     /* Parede fundo
     glPushMatrix();
@@ -81,7 +79,7 @@ void display()
     glScalef(50.0, 35.0, 0.1);
     glutSolidCube(1.0);
     glPopMatrix();
-*/
+    */
 
     /* Parede Tela */
     glColor3f(0.1, 0.1, 0.1);
@@ -91,46 +89,33 @@ void display()
     glutSolidCube(1.0);
     glPopMatrix();
 
-    /* Parede esquerda com textura repetida */
+    /* Parede esquerda com textura */
     glEnable(GL_TEXTURE_2D);
     glBegin(GL_QUADS);
-    // Coordenadas de textura maiores que 1 fazem a textura repetir
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(-24.95f, -10.0f, -52.5f); // inferior traseiro
-    glTexCoord2f(3.0f, 0.0f);
-    glVertex3f(-24.95f, -10.0f, 22.5f); // inferior frontal (repete 3x horizontal)
-    glTexCoord2f(3.0f, 2.0f);
-    glVertex3f(-24.95f, 25.0f, 22.5f); // superior frontal (repete 2x vertical)
-    glTexCoord2f(0.0f, 2.0f);
-    glVertex3f(-24.95f, 25.0f, -52.5f); // superior traseiro
+    glTexCoord2f(0.0, 0.0); glVertex3f(-24.95, -10.0, -52.5);
+    glTexCoord2f(5.0, 0.0); glVertex3f(-24.95, -10.0, 22.5); 
+    glTexCoord2f(5.0, 5.0); glVertex3f(-24.95, 25.0, 22.5); 
+    glTexCoord2f(0.0, 5.0); glVertex3f(-24.95, 25.0, -52.5); 
     glEnd();
     glDisable(GL_TEXTURE_2D);
 
-    /* Parede direita com textura repetida */
+    /* Parede direita com textura */
     glEnable(GL_TEXTURE_2D);
     glBegin(GL_QUADS);
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(24.95f, -10.0f, -52.5f);
-    glTexCoord2f(3.0f, 0.0f);
-    glVertex3f(24.95f, -10.0f, 22.5f);
-    glTexCoord2f(3.0f, 2.0f);
-    glVertex3f(24.95f, 25.0f, 22.5f);
-    glTexCoord2f(0.0f, 2.0f);
-    glVertex3f(24.95f, 25.0f, -52.5f);
+    glTexCoord2f(0.0, 0.0); glVertex3f(24.95, -10.0, -52.5);
+    glTexCoord2f(5.0, 0.0); glVertex3f(24.95, -10.0, 22.5);
+    glTexCoord2f(5.0, 5.0); glVertex3f(24.95, 25.0, 22.5);
+    glTexCoord2f(0.0, 5.0); glVertex3f(24.95, 25.0, -52.5);
     glEnd();
     glDisable(GL_TEXTURE_2D);
 
-    /* Parede fundo com textura repetida */
+    /* Parede fundo com textura  */
     glEnable(GL_TEXTURE_2D);
     glBegin(GL_QUADS);
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(-25.0f, -10.0f, -39.95f); // inferior esquerdo
-    glTexCoord2f(3.0f, 0.0f);
-    glVertex3f(25.0f, -10.0f, -39.95f); // inferior direito 
-    glTexCoord2f(3.0f, 2.0f);
-    glVertex3f(25.0f, 25.0f, -39.95f); // superior direito 
-    glTexCoord2f(0.0f, 2.0f);
-    glVertex3f(-25.0f, 25.0f, -39.95f); // superior esquerdo
+    glTexCoord2f(0.0, 0.0); glVertex3f(-25.0, -10.0, -39.95); 
+    glTexCoord2f(5.0, 0.0); glVertex3f(25.0, -10.0, -39.95); 
+    glTexCoord2f(5.0, 5.0); glVertex3f(25.0, 25.0, -39.95); 
+    glTexCoord2f(0.0, 5.0); glVertex3f(-25.0, 25.0, -39.95);
     glEnd();
     glDisable(GL_TEXTURE_2D);
 
@@ -177,7 +162,7 @@ void display()
             glPushMatrix();
 
             /* Almofada */
-            glColor3f(0.1, 0.1, 0.1);
+            glColor3f(0.5, 0.1, 0.1);
             glTranslatef(-11.0 + x, 2.0 + y, 0.0 - z);
             glPushMatrix();
             glScalef(5.0, 1.0, 5.0);
@@ -201,7 +186,7 @@ void display()
             glPopMatrix();
 
             /* Encosto */
-            glColor3f(0.1, 0.1, 0.1);
+            glColor3f(0.5, 0.1, 0.1);
             glPushMatrix();
             glRotatef(-5.0, 1.0, 0.0, 0.0);
             glTranslatef(0.0, 2.0, -3.0);
@@ -322,7 +307,7 @@ void carregar_texturas(void)
     /* textura do plano */
     glGenTextures(1, &textura_plano);
     glBindTexture(GL_TEXTURE_2D, textura_plano);
-
+    
     if (!(img = ImageLoad(TEXTURA_DO_PLANO)))
     {
         fprintf(stderr, "Error reading a texture.\n");
